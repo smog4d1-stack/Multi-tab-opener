@@ -1,0 +1,34 @@
+return; 
+} 
+if (isNaN(views) || views < 1) { 
+alert('Please enter a valid number of views'); 
+return; 
+} // Limit the number of tabs to 20 
+views = Math.min(views, 20); 
+// Show success message 
+successMessage.style.display = 'block'; 
+// Reset counter 
+let tabsOpened = 0; 
+countElement.textContent = tabsOpened; 
+// Function to open tabs with delay 
+function openTabWithDelay() { 
+if (tabsOpened < views) { 
+try { 
+// Open in new tab 
+window.open(url, '_blank'); 
+tabsOpened++; 
+countElement.textContent = tabsOpened; 
+} catch (e) { 
+console.error('Error opening tab:', e); 
+} 
+// Schedule next tab opening with a small delay 
+setTimeout(openTabWithDelay, 300); 
+} 
+} 
+// Start opening tabs 
+openTabWithDelay(); 
+}); 
+}); 
+</script> 
+</body> 
+</html>
